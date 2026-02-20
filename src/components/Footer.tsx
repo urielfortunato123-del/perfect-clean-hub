@@ -1,4 +1,5 @@
 import { Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -20,27 +21,27 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-bold text-background mb-4">Para Clientes</h4>
             <ul className="space-y-2 text-sm text-background/60">
-              <li><a href="#" className="hover:text-background transition-colors">Como funciona</a></li>
-              <li><a href="#" className="hover:text-background transition-colors">Preços</a></li>
-              <li><a href="#" className="hover:text-background transition-colors">Segurança</a></li>
+              <li><Link to="/como-funciona" className="hover:text-background transition-colors">Como funciona</Link></li>
+              <li><Link to="/precos" className="hover:text-background transition-colors">Preços</Link></li>
+              <li><Link to="/seguranca" className="hover:text-background transition-colors">Segurança</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-display font-bold text-background mb-4">Para Diaristas</h4>
             <ul className="space-y-2 text-sm text-background/60">
-              <li><a href="#" className="hover:text-background transition-colors">Cadastre-se</a></li>
-              <li><a href="#" className="hover:text-background transition-colors">Vantagens</a></li>
-              <li><a href="#" className="hover:text-background transition-colors">Diarista Premium</a></li>
+              <li><Link to="/cadastro" className="hover:text-background transition-colors">Cadastre-se</Link></li>
+              <li><Link to="/vantagens" className="hover:text-background transition-colors">Vantagens</Link></li>
+              <li><Link to="/diarista-premium" className="hover:text-background transition-colors">Diarista Premium</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-display font-bold text-background mb-4">Empresa</h4>
             <ul className="space-y-2 text-sm text-background/60">
-              <li><a href="#" className="hover:text-background transition-colors">Sobre nós</a></li>
-              <li><a href="#" className="hover:text-background transition-colors">Termos de uso</a></li>
-              <li><a href="#" className="hover:text-background transition-colors">Privacidade</a></li>
+              <li><Link to="/sobre-nos" className="hover:text-background transition-colors">Sobre nós</Link></li>
+              <li><Link to="/termos-de-uso" className="hover:text-background transition-colors">Termos de uso</Link></li>
+              <li><Link to="/privacidade" className="hover:text-background transition-colors">Privacidade</Link></li>
             </ul>
           </div>
         </div>
