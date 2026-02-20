@@ -40,14 +40,18 @@ Ajudar clientes a estimar preços de faxina e tirar dúvidas sobre os serviços.
 | Casa grande | 4+ | 2-3 | R$ 260–350 | 5h+ |
 
 ### COM material de limpeza (nós levamos os produtos)
+O preço com material é o preço base + R$ 100 a R$ 150, dependendo do tamanho da residência.
 
 | Tipo de Imóvel | Preço com Material |
 |---|---|
 | Kitnet/Studio (~29m²) | R$ 250–300 |
-| Casa simples/média | R$ 350–400 |
-| Casa grande | A combinar (consulte pelo WhatsApp) |
+| Apartamento pequeno | R$ 270–320 |
+| Apartamento médio | R$ 300–370 |
+| Casa pequena | R$ 290–350 |
+| Casa média/simples | R$ 350–400 |
+| Casa grande | R$ 400–500 (ou a combinar pelo WhatsApp) |
 
-OBS: O valor com material varia conforme o tamanho do imóvel e os produtos necessários.
+OBS: O acréscimo de R$ 100 a R$ 150 varia conforme o tamanho do imóvel e os produtos necessários.
 
 ## ADICIONAIS (somam ao preço base)
 
