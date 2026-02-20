@@ -19,6 +19,16 @@ serve(async (req) => {
 
     const { messages, stream = false } = await req.json();
 
+    const systemInstruction = "Você é o assistente inteligente do Faxina Perfeita, um marketplace de diaristas. Responda sempre em português brasileiro de forma clara e útil. Ajude clientes a estimar preços de limpeza e diaristas a otimizar seus serviços.";
+
+    // Gemma 3n doesn't support system role, so prepend instruction to first user message
+    const processedMessages = messages.map((msg: { role: string; content: string }, i: number) => {
+      if (i === 0 && msg.role === "user") {
+        return { ...msg, content: `[Instrução: ${systemInstruction}]\n\n${msg.content}` };
+      }
+      return msg;
+    });
+
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -29,14 +39,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         model: "google/gemma-3n-e4b-it:free",
-        messages: [
-          {
-            role: "system",
-            content:
-              "Você é o assistente inteligente do Faxina Perfeita, um marketplace de diaristas. Responda sempre em português brasileiro de forma clara e útil. Ajude clientes a estimar preços de limpeza e diaristas a otimizar seus serviços.",
-          },
-          ...messages,
-        ],
+        messages: processedMessages,
         stream,
       }),
     });
