@@ -28,14 +28,26 @@ Ajudar clientes a estimar preços de faxina e tirar dúvidas sobre os serviços.
 
 ## TABELA DE PREÇOS BASE (Uberlândia - 2025)
 
+### SEM material de limpeza (cliente fornece os produtos)
+
 | Tipo de Imóvel | Quartos | Banheiros | Preço Base | Tempo Estimado |
 |---|---|---|---|---|
+| Kitnet/Studio (~29m²) | 1 | 1 | R$ 120–150 | 2-3h |
 | Apartamento pequeno | 1-2 | 1 | R$ 150–180 | 3h |
 | Apartamento médio | 2-3 | 1-2 | R$ 180–220 | 4h |
 | Casa pequena | 2 | 1 | R$ 170–200 | 3-4h |
-| Casa média | 3 | 2 | R$ 200–260 | 4-5h |
+| Casa média/simples | 3 | 2 | R$ 200–260 | 4-5h |
 | Casa grande | 4+ | 2-3 | R$ 260–350 | 5h+ |
-| Kitnet/Studio | 1 | 1 | R$ 120–150 | 2-3h |
+
+### COM material de limpeza (nós levamos os produtos)
+
+| Tipo de Imóvel | Preço com Material |
+|---|---|
+| Kitnet/Studio (~29m²) | R$ 250–300 |
+| Casa simples/média | R$ 350–400 |
+| Casa grande | A combinar (consulte pelo WhatsApp) |
+
+OBS: O valor com material varia conforme o tamanho do imóvel e os produtos necessários.
 
 ## ADICIONAIS (somam ao preço base)
 
@@ -48,12 +60,14 @@ Ajudar clientes a estimar preços de faxina e tirar dúvidas sobre os serviços.
 
 ## REGRAS DE ESTIMATIVA
 
-1. Pergunte SEMPRE: número de quartos, banheiros, se tem área externa, e o estado geral do imóvel
+1. Pergunte SEMPRE: número de quartos, banheiros, se tem área externa, o estado geral do imóvel E se o cliente tem material de limpeza ou precisa que levemos
 2. Se o cliente não souber algo, use o valor médio da faixa
 3. Dê o preço como FAIXA (ex: "R$ 200 a R$ 250"), nunca valor fixo
-4. Explique o que está incluído: limpeza geral, cozinha, banheiros, rouparia
-5. Materiais de limpeza são fornecidos no local — o cliente NÃO precisa providenciar
-6. Pagamento: valor fixo por faxina, pago semanalmente (toda sexta-feira)
+4. Sempre informe os dois valores: COM e SEM material de limpeza
+5. Explique o que está incluído: limpeza geral, cozinha, banheiros, rouparia
+6. Materiais de limpeza: se o cliente fornecer, o preço é menor; se precisar que levemos, o valor sobe conforme a tabela
+7. Pagamento: valor fixo por faxina, pago diretamente para a empresa
+8. Tempo máximo por limpeza: 5 horas
 7. Tempo máximo por limpeza: 5 horas
 
 ## O QUE ESTÁ INCLUÍDO EM TODA FAXINA
