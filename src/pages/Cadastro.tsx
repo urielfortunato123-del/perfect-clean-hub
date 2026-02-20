@@ -1,7 +1,53 @@
 import PageShell from "@/components/PageShell";
-import { Home, Sparkles, Clock, Banknote, CheckCircle2, Star, ClipboardList } from "lucide-react";
+import { Home, Sparkles, Clock, Banknote, CheckCircle2, Star, ClipboardList, Send, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
-const Cadastro = () => (
+const DIAS_SEMANA = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"];
+
+const Cadastro = () => {
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
+  const [enviado, setEnviado] = useState(false);
+  const [form, setForm] = useState({ nome: "", bairro: "", telefone: "", experiencia: "" });
+  const [diasSelecionados, setDiasSelecionados] = useState<string[]>([]);
+
+  const toggleDia = (dia: string) => {
+    setDiasSelecionados((prev) =>
+      prev.includes(dia) ? prev.filter((d) => d !== dia) : [...prev, dia]
+    );
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.nome || !form.bairro || !form.telefone || !form.experiencia || diasSelecionados.length === 0) {
+      toast({ title: "Preencha todos os campos", description: "Todos os campos são obrigatórios.", variant: "destructive" });
+      return;
+    }
+    setLoading(true);
+    const { error } = await supabase.from("candidaturas").insert({
+      nome_completo: form.nome.trim(),
+      bairro: form.bairro.trim(),
+      telefone: form.telefone.trim(),
+      experiencia: form.experiencia.trim(),
+      dias_disponiveis: diasSelecionados,
+    });
+    setLoading(false);
+    if (error) {
+      toast({ title: "Erro ao enviar", description: "Tente novamente mais tarde.", variant: "destructive" });
+    } else {
+      setEnviado(true);
+      toast({ title: "Candidatura enviada! ✅", description: "Entraremos em contato em breve." });
+    }
+  };
+
+  return (
   <PageShell title="Seja uma Diarista Parceira">
     <p className="text-lg text-muted-foreground">
       Estamos selecionando diaristas parceiras para prestação de serviços de limpeza em residências 
@@ -163,19 +209,93 @@ const Cadastro = () => (
       </p>
     </div>
 
-    {/* CTA */}
-    <div className="not-prose gradient-hero rounded-2xl p-8 text-center mt-4">
-      <h2 className="font-display font-bold text-primary-foreground text-2xl mb-2">
+    {/* CTA / Formulário */}
+    <div className="not-prose gradient-hero rounded-2xl p-8 mt-4" id="formulario">
+      <h2 className="font-display font-bold text-primary-foreground text-2xl mb-2 text-center">
         📲 Como se candidatar
       </h2>
-      <p className="text-primary-foreground/80 text-sm mb-6">
-        Envie seu nome completo, bairro, experiência com faxina e dias disponíveis.
-      </p>
-      <button className="bg-card text-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:bg-card/90 transition-colors">
-        Quero me Candidatar
-      </button>
+
+      {enviado ? (
+        <div className="text-center py-8">
+          <CheckCircle2 className="w-16 h-16 text-primary-foreground mx-auto mb-4" />
+          <p className="text-primary-foreground text-xl font-semibold mb-2">Candidatura enviada com sucesso!</p>
+          <p className="text-primary-foreground/80">Entraremos em contato em breve pelo telefone informado.</p>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4 mt-4">
+          <div>
+            <Label htmlFor="nome" className="text-primary-foreground text-sm">Nome completo</Label>
+            <Input
+              id="nome"
+              placeholder="Seu nome completo"
+              value={form.nome}
+              onChange={(e) => setForm({ ...form, nome: e.target.value })}
+              className="bg-card/90 border-0 mt-1"
+              maxLength={100}
+            />
+          </div>
+          <div>
+            <Label htmlFor="bairro" className="text-primary-foreground text-sm">Bairro</Label>
+            <Input
+              id="bairro"
+              placeholder="Ex: Santa Mônica"
+              value={form.bairro}
+              onChange={(e) => setForm({ ...form, bairro: e.target.value })}
+              className="bg-card/90 border-0 mt-1"
+              maxLength={100}
+            />
+          </div>
+          <div>
+            <Label htmlFor="telefone" className="text-primary-foreground text-sm">Telefone / WhatsApp</Label>
+            <Input
+              id="telefone"
+              placeholder="(34) 99999-9999"
+              value={form.telefone}
+              onChange={(e) => setForm({ ...form, telefone: e.target.value })}
+              className="bg-card/90 border-0 mt-1"
+              maxLength={20}
+            />
+          </div>
+          <div>
+            <Label htmlFor="experiencia" className="text-primary-foreground text-sm">Experiência com faxina</Label>
+            <Textarea
+              id="experiencia"
+              placeholder="Conte um pouco sobre sua experiência..."
+              value={form.experiencia}
+              onChange={(e) => setForm({ ...form, experiencia: e.target.value })}
+              className="bg-card/90 border-0 mt-1 min-h-[80px]"
+              maxLength={500}
+            />
+          </div>
+          <div>
+            <Label className="text-primary-foreground text-sm mb-2 block">Dias disponíveis</Label>
+            <div className="flex flex-wrap gap-3">
+              {DIAS_SEMANA.map((dia) => (
+                <label
+                  key={dia}
+                  className="flex items-center gap-2 bg-card/90 rounded-lg px-3 py-2 cursor-pointer text-sm"
+                >
+                  <Checkbox
+                    checked={diasSelecionados.includes(dia)}
+                    onCheckedChange={() => toggleDia(dia)}
+                  />
+                  <span className="text-foreground">{dia}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+          <Button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-card text-foreground font-semibold text-lg py-6 hover:bg-card/90 rounded-xl"
+          >
+            {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <><Send className="w-5 h-5" /> Enviar Candidatura</>}
+          </Button>
+        </form>
+      )}
     </div>
   </PageShell>
-);
+  );
+};
 
 export default Cadastro;

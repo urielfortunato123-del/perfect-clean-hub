@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      candidaturas: {
+        Row: {
+          bairro: string
+          created_at: string
+          dias_disponiveis: string[]
+          experiencia: string
+          id: string
+          nome_completo: string
+          telefone: string
+        }
+        Insert: {
+          bairro: string
+          created_at?: string
+          dias_disponiveis: string[]
+          experiencia: string
+          id?: string
+          nome_completo: string
+          telefone: string
+        }
+        Update: {
+          bairro?: string
+          created_at?: string
+          dias_disponiveis?: string[]
+          experiencia?: string
+          id?: string
+          nome_completo?: string
+          telefone?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
