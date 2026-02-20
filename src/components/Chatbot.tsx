@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+import { MessageCircle, X, Send, Loader2, Trash2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 
@@ -133,9 +133,20 @@ const Chatbot = () => {
                   Assistente Faxina Perfeita
                 </span>
               </div>
-              <button onClick={() => setOpen(false)} className="text-primary-foreground/80 hover:text-primary-foreground">
-                <X className="w-5 h-5" />
-              </button>
+              <div className="flex items-center gap-1">
+                {messages.length > 0 && (
+                  <button
+                    onClick={() => setMessages([])}
+                    className="text-primary-foreground/60 hover:text-primary-foreground transition-colors p-1"
+                    title="Limpar conversa"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                )}
+                <button onClick={() => setOpen(false)} className="text-primary-foreground/80 hover:text-primary-foreground p-1">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
 
             {/* Messages */}
