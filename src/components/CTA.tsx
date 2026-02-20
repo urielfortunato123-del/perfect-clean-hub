@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CTA = () => {
   return (
@@ -18,13 +19,13 @@ const CTA = () => {
             Cadastre-se grátis e encontre diaristas de confiança na sua região agora mesmo.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-card text-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:bg-card/90 transition-colors flex items-center justify-center gap-2">
+            <Link to="/auth" className="bg-card text-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:bg-card/90 transition-colors flex items-center justify-center gap-2">
               Quero Contratar
               <ArrowRight className="w-5 h-5" />
-            </button>
-            <button className="border-2 border-primary-foreground/30 text-primary-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:bg-primary-foreground/10 transition-colors">
+            </Link>
+            <Link to="/cadastro" className="border-2 border-primary-foreground/30 text-primary-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:bg-primary-foreground/10 transition-colors text-center">
               Sou Diarista
-            </button>
+            </Link>
           </div>
         </motion.div>
       </div>
