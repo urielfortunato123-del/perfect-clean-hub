@@ -45,13 +45,18 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Link to="/auth" className="gradient-hero text-primary-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-elevated">
+              <Link to="/orcamento" className="gradient-hero text-primary-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-elevated">
                 Quero Contratar
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link to="/cadastro" className="border-2 border-secondary text-secondary font-semibold px-8 py-4 rounded-xl text-lg hover:bg-secondary hover:text-secondary-foreground transition-colors text-center">
+              <a
+                href="https://wa.me/5577999800514?text=Ol%C3%A1!%20Sou%20diarista%20e%20gostaria%20de%20me%20cadastrar."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-secondary text-secondary font-semibold px-8 py-4 rounded-xl text-lg hover:bg-secondary hover:text-secondary-foreground transition-colors text-center"
+              >
                 Sou Diarista
-              </Link>
+              </a>
             </div>
 
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
