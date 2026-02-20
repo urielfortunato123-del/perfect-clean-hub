@@ -46,9 +46,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-background/10 pt-6 text-center">
+        <div className="border-t border-background/10 pt-6 text-center space-y-1">
           <p className="text-background/40 text-sm">
             © 2026 Faxina Perfeita. Todos os direitos reservados.
+          </p>
+          <p className="text-background/30 text-xs">
+            Faxina Perfeita Serviços LTDA — CNPJ: XX.XXX.XXX/0001-XX
           </p>
         </div>
       </div>
