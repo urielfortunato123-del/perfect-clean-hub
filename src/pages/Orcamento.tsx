@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Send, MapPin, Home, ClipboardList } from "lucide-react";
+import { Send, MapPin, Home, ClipboardList, Navigation, Loader2, CheckCircle2 } from "lucide-react";
+import { toast } from "sonner";
 
 const WHATSAPP_NUMBER = "5577999800514";
 
@@ -32,6 +33,28 @@ const Orcamento = () => {
     observacoes: "",
   });
   const [servicosSelecionados, setServicosSelecionados] = useState<string[]>([]);
+  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [loadingLocation, setLoadingLocation] = useState(false);
+
+  const getLocation = () => {
+    if (!navigator.geolocation) {
+      toast.error("Seu navegador não suporta geolocalização.");
+      return;
+    }
+    setLoadingLocation(true);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        setLoadingLocation(false);
+        toast.success("Localização capturada com sucesso!");
+      },
+      () => {
+        setLoadingLocation(false);
+        toast.error("Não foi possível obter sua localização. Verifique as permissões.");
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  };
 
   const toggleServico = (servico: string) => {
     setServicosSelecionados((prev) =>
@@ -46,6 +69,10 @@ const Orcamento = () => {
       return;
     }
 
+    const locationLink = location
+      ? `https://www.google.com/maps?q=${location.lat},${location.lng}`
+      : null;
+
     const mensagem = [
       `Olá! Gostaria de solicitar um orçamento de limpeza.`,
       ``,
@@ -53,6 +80,7 @@ const Orcamento = () => {
       `*Telefone:* ${form.telefone.trim()}`,
       `*Bairro:* ${form.bairro.trim()}`,
       form.local ? `*Local:* ${form.local.trim()}` : null,
+      locationLink ? `*📍 Localização:* ${locationLink}` : null,
       `*Tamanho da casa:* ${form.tamanho}`,
       `*Frequência:* ${form.frequencia}`,
       `*Serviços desejados:* ${servicosSelecionados.join(", ")}`,
@@ -133,6 +161,43 @@ const Orcamento = () => {
                 className="mt-1"
               />
             </div>
+          </div>
+
+          {/* Localização */}
+          <div>
+            <Label>Local da faxina — envie sua localização</Label>
+            <button
+              type="button"
+              onClick={getLocation}
+              disabled={loadingLocation}
+              className={`mt-1 w-full flex items-center justify-center gap-2 rounded-xl border border-border px-4 py-3 text-sm transition-colors ${
+                location
+                  ? "bg-green-50 border-green-300 text-green-700"
+                  : "bg-muted/50 text-foreground hover:bg-muted"
+              }`}
+            >
+              {loadingLocation ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Obtendo localização...
+                </>
+              ) : location ? (
+                <>
+                  <CheckCircle2 className="w-4 h-4" />
+                  Localização capturada ✓
+                </>
+              ) : (
+                <>
+                  <Navigation className="w-4 h-4" />
+                  📍 Enviar minha localização
+                </>
+              )}
+            </button>
+            {location && (
+              <p className="text-xs text-muted-foreground mt-1">
+                Coordenadas: {location.lat.toFixed(5)}, {location.lng.toFixed(5)}
+              </p>
+            )}
           </div>
         </div>
 
