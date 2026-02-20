@@ -23,10 +23,12 @@ serve(async (req) => {
       method: "POST",
       headers: {
         Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+        "HTTP-Referer": "https://faxinaperfeita.app",
+        "X-Title": "Faxina Perfeita",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemma-3n-e4b-it",
+        model: "google/gemma-3n-e4b-it:free",
         messages: [
           {
             role: "system",
