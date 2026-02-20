@@ -25,7 +25,14 @@ const Hero = () => {
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight mb-6">
               Sua casa{" "}
-              <span className="bg-clip-text text-transparent gradient-hero">
+              <span
+                style={{
+                  background: "linear-gradient(135deg, hsl(217, 91%, 50%) 0%, hsl(200, 80%, 50%) 50%, hsl(160, 64%, 45%) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
                 impecável
               </span>
               , sem preocupação.
