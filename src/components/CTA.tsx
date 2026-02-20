@@ -19,13 +19,18 @@ const CTA = () => {
             Cadastre-se grátis e encontre diaristas de confiança na sua região agora mesmo.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/auth" className="bg-card text-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:bg-card/90 transition-colors flex items-center justify-center gap-2">
+            <Link to="/orcamento" className="bg-card text-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:bg-card/90 transition-colors flex items-center justify-center gap-2">
               Quero Contratar
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link to="/cadastro" className="border-2 border-primary-foreground/30 text-primary-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:bg-primary-foreground/10 transition-colors text-center">
+            <a
+              href="https://wa.me/5577999800514?text=Ol%C3%A1!%20Sou%20diarista%20e%20gostaria%20de%20me%20cadastrar."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-primary-foreground/30 text-primary-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:bg-primary-foreground/10 transition-colors text-center"
+            >
               Sou Diarista
-            </Link>
+            </a>
           </div>
         </motion.div>
       </div>
