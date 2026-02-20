@@ -4,23 +4,23 @@ import { ClipboardList, Users, CreditCard, Star } from "lucide-react";
 const steps = [
   {
     icon: ClipboardList,
-    title: "Descreva o serviço",
-    description: "Informe o tamanho do imóvel, tipo de limpeza e data desejada. Nossa IA calcula o preço ideal.",
+    title: "Preencha o formulário",
+    description: "Informe o tamanho do imóvel, tipo de limpeza e frequência desejada.",
   },
   {
     icon: Users,
-    title: "Receba propostas",
-    description: "Diaristas verificadas enviam propostas. Veja avaliações, fotos e preços antes de escolher.",
+    title: "Fale com a Helen Clara",
+    description: "Você será direcionado ao WhatsApp para combinar os detalhes diretamente.",
   },
   {
     icon: CreditCard,
-    title: "Pague com segurança",
-    description: "Pagamento pelo app, liberado apenas após confirmação do serviço concluído.",
+    title: "Pagamento direto",
+    description: "Combine o valor e pague diretamente para a empresa. Sem taxas extras.",
   },
   {
     icon: Star,
-    title: "Avalie o serviço",
-    description: "Dê sua nota e ajude a comunidade. Fotos antes/depois garantem transparência.",
+    title: "Casa impecável",
+    description: "Receba a diarista no dia combinado e aproveite sua casa limpa e organizada.",
   },
 ];
 

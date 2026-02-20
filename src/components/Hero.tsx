@@ -40,8 +40,8 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed">
-              Encontre diaristas de confiança perto de você. Com IA para precificação justa, 
-              avaliações verificadas e pagamento seguro pelo app.
+              Encontre diaristas de confiança perto de você. Atendimento personalizado 
+              direto com a Helen Clara, sem intermediários.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
@@ -62,13 +62,13 @@ const Hero = () => {
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-secondary" />
-                Pagamento seguro
+                Atendimento direto
               </div>
               <div className="flex items-center gap-2">
                 <Star className="w-4 h-4 text-warning" />
-                4.9 estrelas
+                Profissionais verificadas
               </div>
-              <span>+2.000 diaristas</span>
+              <span>Uberlândia e região</span>
             </div>
           </motion.div>
 
