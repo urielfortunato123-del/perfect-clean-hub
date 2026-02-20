@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-cleaning.jpg";
 
 const Hero = () => {
@@ -44,13 +45,13 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <button className="gradient-hero text-primary-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-elevated">
+              <Link to="/auth" className="gradient-hero text-primary-foreground font-semibold px-8 py-4 rounded-xl text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-elevated">
                 Quero Contratar
                 <ArrowRight className="w-5 h-5" />
-              </button>
-              <button className="border-2 border-secondary text-secondary font-semibold px-8 py-4 rounded-xl text-lg hover:bg-secondary hover:text-secondary-foreground transition-colors">
+              </Link>
+              <Link to="/cadastro" className="border-2 border-secondary text-secondary font-semibold px-8 py-4 rounded-xl text-lg hover:bg-secondary hover:text-secondary-foreground transition-colors text-center">
                 Sou Diarista
-              </button>
+              </Link>
             </div>
 
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
